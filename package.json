@@ -1,0 +1,41 @@
+{
+  "name": "xkcd-viewer",
+  "version": "1.0.0",
+  "description": "XKCD viewer",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "npm run lint && set CI=true && react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neverendingqs-sandbox/xkcd-viewer.git"
+  },
+  "keywords": [
+    "react.js",
+    "bootstrap"
+  ],
+  "author": "neverendingqs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neverendingqs-sandbox/xkcd-viewer/issues"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.12.1",
+    "eslint-plugin-react": "^7.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.5"
+  }
+}
