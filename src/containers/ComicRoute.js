@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { comicRequest } from '../actions';
@@ -16,45 +15,30 @@ class ComicRoute extends Component {
     this.props.comicRequest(nextProps.match.params.id);
   }
 
-  getPreviousComicLocation() {
-    const currComicNum = Number(this.props.match.params.id || this.props.comicMetadata.num);
-    const nextComicNum = currComicNum && (currComicNum - 1 > 1)
-      ? currComicNum - 1
-      : 1;
-
-    return `/${nextComicNum || ''}`;
-  }
-
-  getNextComicLocation() {
-    return `/${Number(this.props.match.params.id) + 1 || ''}`;
-  }
-
-  getDate() {
-    const { year, month, day } = this.props.comicMetadata;
-    return `${year}-${month}-${day}`;
-  }
-
   render() {
     return (
       <div>
         <Navigation
           comicNum={Number(this.props.match.params.id || this.props.comicMetadata.num)}
+          isEnabled={!!this.props.comicMetadata}
         />
-        <Comic
-          title={this.props.comicMetadata.title}
-          img={this.props.comicMetadata.img}
-          alt={this.props.comicMetadata.alt}
-          year={this.props.comicMetadata.year}
-          month={this.props.comicMetadata.month}
-          day={this.props.comicMetadata.day}
-        />
+        {this.props.comicMetadata &&
+          <Comic
+            title={this.props.comicMetadata.title}
+            img={this.props.comicMetadata.img}
+            alt={this.props.comicMetadata.alt}
+            year={this.props.comicMetadata.year}
+            month={this.props.comicMetadata.month}
+            day={this.props.comicMetadata.day}
+          />
+        }
       </div>
     );
   }
 }
 const mapStateToProps = ({ comicMetadata }, ownProps) => {
   const comicNum = ownProps.match.params.id || Math.max(Object.keys(comicMetadata));
-  return { comicMetadata: comicMetadata[comicNum] || {} };
+  return { comicMetadata: comicMetadata[comicNum] };
 };
 const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
 
