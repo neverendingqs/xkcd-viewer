@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { comicRequest } from '../actions';
 import Comic from '../components/Comic';
+import Navigation from '../components/Navigation';
 
 class ComicRoute extends Component {
   componentWillMount() {
@@ -36,19 +37,9 @@ class ComicRoute extends Component {
   render() {
     return (
       <div>
-        <Link
-          className='btn btn-secondary'
-          to={this.getPreviousComicLocation()}
-        >
-          Previous
-        </Link>
-        <Link
-          className='btn btn-secondary'
-          to={this.getNextComicLocation()}
-        >
-          Next
-        </Link>
-
+        <Navigation
+          comicNum={Number(this.props.match.params.id || this.props.comicMetadata.num)}
+        />
         <Comic
           title={this.props.comicMetadata.title}
           img={this.props.comicMetadata.img}
@@ -57,7 +48,6 @@ class ComicRoute extends Component {
           month={this.props.comicMetadata.month}
           day={this.props.comicMetadata.day}
         />
-
       </div>
     );
   }
