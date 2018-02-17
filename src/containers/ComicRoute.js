@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { comicRequest } from '../actions';
+import Comic from '../components/Comic';
 
-class Comic extends Component {
+class ComicRoute extends Component {
   componentWillMount() {
     this.props.comicRequest(this.props.match.params.id);
   }
@@ -48,17 +49,14 @@ class Comic extends Component {
           Next
         </Link>
 
-        <h2>{this.props.comicMetadata.title}</h2>
-        <h2><small>{this.getDate()}</small></h2>
-
-        <figure className="figure">
-          <img
-            src={this.props.comicMetadata.img}
-            className="figure-img img-fluid rounded"
-            alt=""
-          />
-          <figcaption className="figure-caption">{this.props.comicMetadata.alt}</figcaption>
-        </figure>
+        <Comic
+          title={this.props.comicMetadata.title}
+          img={this.props.comicMetadata.img}
+          alt={this.props.comicMetadata.alt}
+          year={this.props.comicMetadata.year}
+          month={this.props.comicMetadata.month}
+          day={this.props.comicMetadata.day}
+        />
 
       </div>
     );
@@ -71,4 +69,4 @@ const mapStateToProps = ({ comicMetadata }, ownProps) => {
 const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
-export default connector(Comic);
+export default connector(ComicRoute);

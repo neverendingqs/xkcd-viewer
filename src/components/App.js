@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Comic from '../containers/Comic';
+import ComicRoute from '../containers/ComicRoute';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
           <BrowserRouter>
             <div>
               <Switch>
-                <Route path="/:id?" component={Comic} />
+                <Route path="/:id?" component={ComicRoute} />
               </Switch>
             </div>
           </BrowserRouter>
