@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { comicLoad } from '../actions';
 
 class Comic extends Component {
   getDate() {
@@ -11,10 +8,8 @@ class Comic extends Component {
   }
 
   render() {
-    console.log(this.props.comicMetadata);
     return (
       <div>
-        {console.log(this.props.comicMetadata)}
         <h2>{this.props.comicMetadata.title}</h2>
         <h2><small>{this.getDate()}</small></h2>
 
@@ -30,8 +25,10 @@ class Comic extends Component {
     );
   }
 }
-const mapStateToProps = ({ comicMetadata }) => ({ comicMetadata });
-const mapDispatchToProps = dispatch => bindActionCreators({ comicLoad }, dispatch);
+const mapStateToProps = ({ comicMetadata }) => {
+  const latestComicNum = Math.max(Object.keys(comicMetadata));
+  return { comicMetadata: comicMetadata[latestComicNum] || {} };
+};
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect(mapStateToProps);
 export default connector(Comic);
