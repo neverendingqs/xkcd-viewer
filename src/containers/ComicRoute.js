@@ -15,11 +15,18 @@ class ComicRoute extends Component {
     this.props.comicRequest(nextProps.match.params.id);
   }
 
+  getComicNum() {
+    return Number(
+      this.props.match.params.id
+      || (this.props.comicMetadata && this.props.comicMetadata.num)
+    );
+  }
+
   render() {
     return (
       <div>
         <Navigation
-          comicNum={Number(this.props.match.params.id || this.props.comicMetadata.num)}
+          comicNum={this.getComicNum()}
           isEnabled={!!this.props.comicMetadata}
         />
         {this.props.comicMetadata &&
@@ -27,9 +34,6 @@ class ComicRoute extends Component {
             title={this.props.comicMetadata.title}
             img={this.props.comicMetadata.img}
             alt={this.props.comicMetadata.alt}
-            year={this.props.comicMetadata.year}
-            month={this.props.comicMetadata.month}
-            day={this.props.comicMetadata.day}
           />
         }
       </div>
