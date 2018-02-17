@@ -1,9 +1,11 @@
 import { COMIC_RETRIEVED } from '../actions';
 
-export default (state = {}, action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case COMIC_RETRIEVED:
-      return Object.assign({}, state, { [action.comicNum]: action.comicMetadata });
+      return action.isLatest
+        ? action.comicMetadata.num
+        : state;
     default:
       return state;
   }
