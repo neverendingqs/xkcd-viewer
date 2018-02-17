@@ -15,6 +15,10 @@ class ComicRoute extends Component {
     this.props.comicRequest(nextProps.match.params.id);
   }
 
+  doesComicExist() {
+    return this.props.comicMetadata === null;
+  }
+
   getComicNum() {
     return Number(
       this.props.match.params.id
@@ -35,6 +39,9 @@ class ComicRoute extends Component {
             img={this.props.comicMetadata.img}
             alt={this.props.comicMetadata.alt}
           />
+        }
+        {this.doesComicExist() &&
+          <div>Not Found!</div>
         }
       </div>
     );

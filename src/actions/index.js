@@ -11,11 +11,21 @@ export const comicRequest = comicNum => (dispatch, getState) => {
   return axios
     .get(`https://xkcd.now.sh/${comicNum || ''}`)
     .then(response => dispatch(
-      comicRetrieved(response.data)
+      comicRetrieved({
+        comicNum,
+        comicMetadata: response.data
+      })
+    ))
+    .catch(() => dispatch(
+      comicRetrieved({
+        comicNum,
+        comicMetadata: null
+      })
     ));
 };
 
-export const comicRetrieved = comicMetadata => ({
+export const comicRetrieved = ({ comicNum, comicMetadata }) => ({
   type: COMIC_RETRIEVED,
+  comicNum: comicNum || comicMetadata.num,
   comicMetadata
 });
