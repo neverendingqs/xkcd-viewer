@@ -1,10 +1,21 @@
 import axios from 'axios';
 
-export const COMIC_LOAD = 'COMIC_LOAD';
+export const COMIC_RETRIEVED = 'COMIC_RETRIEVED';
 
-export const comicLoad = comicNum => ({
-  type: COMIC_LOAD,
-  payload: axios
+export const comicRequest = comicNum => (dispatch, getState) => {
+  const { comicMetadata } = getState();
+  if(comicNum && comicMetadata[comicNum]) {
+    return Promise.resolve();
+  }
+
+  return axios
     .get(`https://xkcd.now.sh/${comicNum || ''}`)
-    .then(response => response.data)
+    .then(response => dispatch(
+      comicRetrieved(response.data)
+    ));
+};
+
+export const comicRetrieved = comicMetadata => ({
+  type: COMIC_RETRIEVED,
+  comicMetadata
 });

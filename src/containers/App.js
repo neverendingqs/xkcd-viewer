@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { comicLoad } from '../actions';
+import { comicRequest } from '../actions';
 import Comic from './Comic';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.comicLoad();
+  componentWillMount() {
+    this.props.comicRequest();
   }
 
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ comicLoad }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
 
 const connector = connect(null, mapDispatchToProps);
 export default connector(App);
