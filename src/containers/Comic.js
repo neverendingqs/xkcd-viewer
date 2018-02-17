@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { comicRequest } from '../actions';
@@ -7,6 +8,10 @@ import { comicRequest } from '../actions';
 class Comic extends Component {
   componentWillMount() {
     this.props.comicRequest(this.props.match.params.id);
+  }
+
+  componentWillUpdate(nextProps) {
+    this.props.comicRequest(nextProps.match.params.id);
   }
 
   getDate() {
@@ -17,6 +22,19 @@ class Comic extends Component {
   render() {
     return (
       <div>
+        <Link
+          className='btn btn-secondary'
+          to={`/${Number(this.props.comicMetadata.num) - 1}`}
+        >
+          Previous
+        </Link>
+        <Link
+          className='btn btn-secondary'
+          to={`/${Number(this.props.comicMetadata.num) + 1}`}
+        >
+          Next
+        </Link>
+
         <h2>{this.props.comicMetadata.title}</h2>
         <h2><small>{this.getDate()}</small></h2>
 
@@ -28,6 +46,7 @@ class Comic extends Component {
           />
           <figcaption className="figure-caption">{this.props.comicMetadata.alt}</figcaption>
         </figure>
+
       </div>
     );
   }

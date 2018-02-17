@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { bindActionCreators } from 'redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { comicRequest } from '../actions';
-import Comic from './Comic';
+import Comic from '../containers/Comic';
 
 class App extends Component {
   render() {
@@ -26,7 +23,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
-
-const connector = connect(null, mapDispatchToProps);
-export default connector(App);
+export default App;
