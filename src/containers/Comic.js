@@ -18,13 +18,13 @@ class Comic extends Component {
         <h2>{this.props.comicMetadata.title}</h2>
         <h2><small>{this.getDate()}</small></h2>
 
-        <figure>
+        <figure className="figure">
           <img
             src={this.props.comicMetadata.img}
-            className="img-fluid"
+            className="figure-img img-fluid rounded"
             alt=""
           />
-          <figcaption>{this.props.comicMetadata.alt}</figcaption>
+          <figcaption className="figure-caption">{this.props.comicMetadata.alt}</figcaption>
         </figure>
       </div>
     );
