@@ -10,8 +10,21 @@ class Comic extends Component {
     this.props.comicRequest(this.props.match.params.id);
   }
 
-  componentWillUpdate(nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.props.comicRequest(nextProps.match.params.id);
+  }
+
+  getPreviousComicLocation() {
+    const currComicNum = Number(this.props.match.params.id || this.props.comicMetadata.num);
+    const nextComicNum = currComicNum && (currComicNum - 1 > 1)
+      ? currComicNum - 1
+      : 1;
+
+    return `/${nextComicNum || ''}`;
+  }
+
+  getNextComicLocation() {
+    return `/${Number(this.props.match.params.id) + 1 || ''}`;
   }
 
   getDate() {
@@ -24,13 +37,13 @@ class Comic extends Component {
       <div>
         <Link
           className='btn btn-secondary'
-          to={`/${Number(this.props.comicMetadata.num) - 1}`}
+          to={this.getPreviousComicLocation()}
         >
           Previous
         </Link>
         <Link
           className='btn btn-secondary'
-          to={`/${Number(this.props.comicMetadata.num) + 1}`}
+          to={this.getNextComicLocation()}
         >
           Next
         </Link>
