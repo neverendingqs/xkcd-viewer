@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router'
 import { bindActionCreators } from 'redux';
 
 import { comicRequest } from '../actions';
@@ -43,14 +44,21 @@ class ComicRoute extends Component {
           />
         }
         {this.doesComicExist() &&
-          <div>Not Found!</div>
+          <Redirect push to="/"/>
         }
       </div>
     );
   }
 }
+
+const getMaxComicNum = comicMetadata => Math.max(
+  ...Object
+    .keys(comicMetadata)
+    .filter(k => comicMetadata[k])
+);
+
 const mapStateToProps = ({ comicMetadata }, ownProps) => {
-  const comicNum = ownProps.match.params.id || Math.max(Object.keys(comicMetadata));
+  const comicNum = ownProps.match.params.id || getMaxComicNum(comicMetadata)
   return { comicMetadata: comicMetadata[comicNum] };
 };
 const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
