@@ -12,7 +12,9 @@ class ComicRoute extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props.comicRequest(nextProps.match.params.id);
+    if(nextProps.match.params.id) {
+      this.props.comicRequest(nextProps.match.params.id);
+    }
   }
 
   doesComicExist() {
