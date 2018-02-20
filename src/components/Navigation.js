@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Navigation.css'
+import './Navigation.css';
 
 class Navigation extends Component {
   getButtonClass() {
     const prefix = this.props.isEnabled
       ? ''
       : 'disabled';
-    return `btn btn-outline-secondary ${prefix}`
+    return `btn btn-outline-secondary ${prefix}`;
   }
 
   getPreviousButtonClass() {
     const suffix = this.props.comicNum === 1
       ? ' disabled'
       : '';
-    return `btn btn-secondary${suffix}`
+    return `btn btn-secondary${suffix}`;
   }
 
   getPreviousComicLocation() {

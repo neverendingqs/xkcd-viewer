@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import { comicRequest } from '../actions';
@@ -57,7 +57,7 @@ const getMaxComicNum = comicMetadata => Math.max(
 );
 
 const mapStateToProps = ({ comicMetadata }, ownProps) => {
-  const comicNum = ownProps.match.params.id || getMaxComicNum(comicMetadata)
+  const comicNum = ownProps.match.params.id || getMaxComicNum(comicMetadata);
   return { comicMetadata: comicMetadata[comicNum] };
 };
 const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
