@@ -34,7 +34,6 @@ class ComicRoute extends Component {
       <div>
         <Navigation
           comicNum={this.getComicNum()}
-          isEnabled={!!this.props.comicMetadata}
         />
         {this.props.comicMetadata &&
           <Comic
