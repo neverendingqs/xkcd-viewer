@@ -47,6 +47,15 @@ class Navigation extends Component {
         >
           {'<'}
         </Link>
+        <button
+          className="btn btn-secondary"
+          onClick={e => {
+            e.target.blur();
+            this.props.randomizer();
+          }}
+        >
+          ?
+        </button>
         <Link
           className="btn btn-secondary"
           onClick={e => e.target.blur()}

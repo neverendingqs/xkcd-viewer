@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
+import { comicRequest } from '../actions';
 import About from '../components/About';
 import ComicRoute from '../containers/ComicRoute';
 
 class App extends Component {
+  componentWillMount() {
+    this.props.comicRequest();
+  }
+
   render() {
     return (
       <div className="container">
@@ -39,4 +46,7 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
+
+const connector = connect(null, mapDispatchToProps);
+export default connector(App);
