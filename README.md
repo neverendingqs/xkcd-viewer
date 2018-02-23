@@ -1,9 +1,10 @@
 # XKCD Viewer
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/neverendingqs/xkcd-viewer.svg)](https://greenkeeper.io/)
-
 [![Build
 Status](https://travis-ci.org/neverendingqs/xkcd-viewer.svg?branch=master)](https://travis-ci.org/neverendingqs/xkcd-viewer)
+[![Greenkeeper
+badge](https://badges.greenkeeper.io/neverendingqs/xkcd-viewer.svg)](https://greenkeeper.io/)
+
 [![Deploy to
 Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/neverendingqs/xkcd-viewer)
 
