@@ -24,7 +24,7 @@
     "url": "https://github.com/neverendingqs-sandbox/xkcd-viewer/issues"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
