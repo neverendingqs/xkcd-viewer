@@ -1,5 +1,7 @@
 # XKCD Viewer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/neverendingqs/xkcd-viewer.svg)](https://greenkeeper.io/)
+
 [![Build
 Status](https://travis-ci.org/neverendingqs/xkcd-viewer.svg?branch=master)](https://travis-ci.org/neverendingqs/xkcd-viewer)
 [![Deploy to
