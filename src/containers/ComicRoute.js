@@ -8,6 +8,11 @@ import Comic from '../components/Comic';
 import Navigation from '../components/Navigation';
 
 class ComicRoute extends Component {
+  constructor(props) {
+    super(props);
+    this.randomizer = this.randomizer.bind(this);
+  }
+
   componentWillMount() {
     this.props.comicRequest(this.props.match.params.id);
   }
@@ -29,11 +34,17 @@ class ComicRoute extends Component {
     );
   }
 
+  randomizer() {
+    const nextComicNum = Math.floor(Math.random() * this.props.latestComicNum) + 1;
+    return this.props.history.push(`/${nextComicNum}`);
+  }
+
   render() {
     return (
       <div>
         <Navigation
           comicNum={this.getComicNum()}
+          randomizer={this.randomizer}
         />
         {this.props.comicMetadata &&
           <Comic
@@ -50,15 +61,12 @@ class ComicRoute extends Component {
   }
 }
 
-const getMaxComicNum = comicMetadata => Math.max(
-  ...Object
-    .keys(comicMetadata)
-    .filter(k => comicMetadata[k])
-);
-
-const mapStateToProps = ({ comicMetadata }, ownProps) => {
-  const comicNum = ownProps.match.params.id || getMaxComicNum(comicMetadata);
-  return { comicMetadata: comicMetadata[comicNum] };
+const mapStateToProps = ({ comicMetadata, latestComicNum }, ownProps) => {
+  const comicNum = ownProps.match.params.id || latestComicNum;
+  return {
+    comicMetadata: comicMetadata[comicNum],
+    latestComicNum
+  };
 };
 const mapDispatchToProps = dispatch => bindActionCreators({ comicRequest }, dispatch);
 
