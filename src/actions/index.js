@@ -1,10 +1,22 @@
 import axios from 'axios';
+import '../extensions/Storage';
 
 export const COMIC_RETRIEVED = 'COMIC_RETRIEVED';
 
 export const comicRequest = comicNum => (dispatch, getState) => {
   const state = getState();
   if(comicNum && state.comicMetadata[comicNum]) {
+    return Promise.resolve();
+  }
+
+  const comicMetadataFromCache = sessionStorage.tryGetJsonItem(comicNum);
+  if(comicMetadataFromCache) {
+    dispatch(
+      comicRetrieved({
+        comicNum,
+        comicMetadata: comicMetadataFromCache
+      })
+    );
     return Promise.resolve();
   }
 
@@ -20,6 +32,7 @@ export const comicRequest = comicNum => (dispatch, getState) => {
           comicMetadata
         })
       );
+      sessionStorage.setJsonItem(comicNumActual, comicMetadata);
     })
     .catch(() => dispatch(
       comicRetrieved({
