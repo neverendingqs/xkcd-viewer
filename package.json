@@ -6,17 +6,27 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint --ignore-path .gitignore .",
-    "test": "npm run lint && set CI=true && react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neverendingqs-sandbox/xkcd-viewer.git"
   },
   "keywords": [
     "react.js",
-    "bootstrap"
+    "bootstrap",
+    "xkcd",
+    "create-react-app"
   ],
   "author": "neverendingqs",
   "license": "MIT",
@@ -29,12 +39,8 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.5",
+    "react-scripts": "2.0.4",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^5.3.0",
-    "eslint-plugin-react": "^7.5.1"
   }
 }
