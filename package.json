@@ -34,13 +34,13 @@
     "url": "https://github.com/neverendingqs-sandbox/xkcd-viewer/issues"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "2.1.1",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "axios": "0.18.0",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "react-redux": "6.0.1",
+    "react-router-dom": "5.0.0",
+    "react-scripts": "2.1.8",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0"
   }
 }
